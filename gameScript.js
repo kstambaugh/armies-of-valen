@@ -15,35 +15,105 @@ let baseFocus
 let baseSpeed
 let baseRecover
 
-const Necromancer = {
-    type: 'none',
-    level: 2,
+const baseCharacter = {
+    health: 8,
+    attack: 8,
+    armor: 8,
+    focus: 8,
+    speed: 8,
+    recover: 8,
+}
+
+
+const necro = {
+    health: 6,
+    attack: 2,
+    armor: 4,
+    focus: 0,
+    speed: 0,
+    recover: 10,
+}
+const soldier = {
+    baseHealth: 2,
+    baseAttack: 5,
+    baseArmor: 2,
+    baseFocus: 2,
+    baseSpeed: 0,
+    baseRecover: 1,
+}
+const machine = {
+    baseHealth: 2,
+    baseAttack: 0,
+    baseArmor: 2,
+    baseFocus: -1,
+    baseSpeed: -2,
+    baseRecover: 5,
+}
+
+
+const undead = {
+    type: necro,
+    level: 1,
     name: 'none'
 }
 
-const baseCharacter = {
-    level: 0,
-    name: "",
-    health: 5,
-    attack: 5,
-    armor: 5,
-    focus: 5,
-    speed: 5,
-    recover: 5,
-}
 
 
-const createNewCharacter = (x) => {
-    let key;
-    let value;
-    for (let i in character) {
-        key = i
-        value = character[i]
+//this adds the base and type specific statblocks.
+const statCompare = (myObj, staticObj) => {
+    let myVal = Object.values(myObj)
+    let baseVal = Object.values(staticObj)
+    let attribute = Object.keys(myObj)
+    let newNPC = {}
+    for (let i = 0; i < myVal.length; i++) {
+        for (let j = 0; j < baseVal.length; j++) {
+            if (i == j) {
+                statSum = myVal[i] + baseVal[j]
+                attStat = (attribute[i])
+                newNPC[attStat] = statSum
+            }
+        }
     }
+    return newNPC
 }
 
-createNewCharacter(Necromancer)
-// console.log(Necromancer)
+newNPC = statCompare(necro, baseCharacter)
+console.log(newNPC)
+
+const outputCharacter = {
+    type: necro,
+    level: 1,
+    name: "zombie",
+    health: 14,
+    attack: 10,
+    armor: 12,
+    focus: 8,
+    speed: 8,
+    recover: 18,
+
+}
+//this adds the base and type specific statblocks.
+
+// const statCompare = (myObj,staticObj) => {
+//   let myVal = Object.values(myObj)
+//   let baseVal = Object.values(staticObj)
+//   let attribute = Object.keys(myObj)
+//   let newNPC={}
+//   for(let i = 0; i < myVal.length;i++) {
+//     for(let j =0; j < baseVal.length;j++){
+//       if (i==j){
+//         statSum =  myVal[i] + baseVal[j]
+//         attStat = (attribute[i])
+//         newNPC[attStat] = statSum
+//       }
+//     }
+//   }
+//   return newNPC
+// }
+
+// newNPC = statCompare(necro, baseCharacter)
+// console.log(newNPC)
+
 
 //does not work... yet
 
