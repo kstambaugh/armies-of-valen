@@ -23,8 +23,6 @@ const baseCharacter = {
     speed: 8,
     recover: 8,
 }
-
-
 const necro = {
     health: 6,
     attack: 2,
