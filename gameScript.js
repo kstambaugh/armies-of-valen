@@ -1,11 +1,4 @@
-let characterLevel //serves as a multiplier for the below stats
-let maxHealth      //total hit points
-let maxAttack      //amount of damage (range)
-let maxArmor       //reduces incoming damage
-let maxFocus       //affects chance to hit
-let maxSpeed       //number of hits and turn order
-let maxRecover     //how many hit points are regained//how long neg status affects remain
-
+const baseStat = 8
 
 let characterName
 let baseHealth
